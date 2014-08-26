@@ -1,0 +1,8 @@
+
+* VCC - 3.3V
+
+* GND - GND
+
+* DATA - GPIO18(PIN12)
+
+GPIO num is defined in /etc/modules

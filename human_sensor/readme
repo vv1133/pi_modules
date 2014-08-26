@@ -1,0 +1,5 @@
+HC-SR501
+
+* VCC - 5V
+* GND - GND
+* DATA - GPIO7(PIN26)

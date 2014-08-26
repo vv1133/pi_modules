@@ -1,0 +1,7 @@
+Adafruit_DHT.c is forked from https://github.com/adafruit/Adafruit-Raspberry-Pi-Python-Code/blob/master/Adafruit_DHT_Driver/Adafruit_DHT.c
+
+* VCC - 3V
+
+* GND - GND
+
+* DATA - GPIO4(PIN7)

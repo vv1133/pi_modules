@@ -2,13 +2,14 @@
 
 import subprocess
 import sys
+import os
 
 table = [ \
 			{"name":"send_ir", "gpio":25, "shared":"F", "path":"send_tv_code/send.sh", \
 				"info":"Send infra-red signals."}, \
 			{"name":"recv_ir", "gpio":18, "shared":"T", "path":None, \
 				"info":"Receive infra-red signals."}, \
-			{"name":"dht11", "gpio":4, "shared":"F", "path":"dth11/dht11.sh", \
+			{"name":"dht11", "gpio":4, "shared":"F", "path":"dht11/dht11.sh", \
 				"info":"Get temperature and humidity."}, \
 			{"name":"detect_sound", "gpio":5, "shared":"F", "path":"sound_detect/detect.sh", \
 				"info":"Detect sound."}, \
@@ -50,14 +51,21 @@ def execute(name, args):
 		print "no such name: %s" %name
 		return
 
-	cmd = [path]
+	cmd = ["/home/pi/pi_modules/" + path]
 	cmd.extend(args)
 	cmd.extend([str(gpio)])
-	subprocess.call(cmd)
+	#print cmd
+	try:
+		p = subprocess.Popen(args=cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+		print p.stdout.read()
+	except:
+		print "warning: subprcess failed"
+		sys.exit(1)
 
 
-check_table()
-print_table()
 if len(sys.argv) > 1:
 	execute(sys.argv[1], sys.argv[2:])
+else:
+	check_table()
+	print_table()
 
